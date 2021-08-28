@@ -114,7 +114,10 @@ public class MainActivity extends AppCompatActivity {
                                    }
                                }
                                   runOnUiThread(()->{
-                                      Toast.makeText(this,"pasaron 1.5 seg",Toast.LENGTH_SHORT).show();
+                                      Toast.makeText(this,"siguiente pregunta",Toast.LENGTH_SHORT).show();
+                                      generarNuevaPregunta();
+                                      tiempoRestante = 30;
+                                      contadorText.setText(""+tiempoRestante);
                                   });
 
 
@@ -140,6 +143,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Correcto", Toast.LENGTH_SHORT).show();
             puntaje += 5;
             puntajeText.setText("Puntaje: "+puntaje);
+            tiempoRestante = 30;
+            contadorText.setText(""+tiempoRestante);
         } else {
             //incorrecto
             Toast.makeText(this, "Incorrecto", Toast.LENGTH_SHORT).show();
@@ -151,7 +156,10 @@ public class MainActivity extends AppCompatActivity {
     public void generarNuevaPregunta() {
      preguntaActual = new Pregunta();
      preguntaText.setText(preguntaActual.getPregunta());
+     respuestaUsuario.getText().clear();
     }
+
+
 
     public void tryAgain(){
         new Thread(
